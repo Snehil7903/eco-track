@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./context/ProtectedRoute";
+import DashboardLayout from "./layouts/DashboardLayout";
 
 export default function App() {
   return (
@@ -45,9 +46,9 @@ export default function App() {
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <MainLayout>
+              <DashboardLayout>
                 <Dashboard />
-              </MainLayout>
+              </DashboardLayout>
             </ProtectedRoute>
           }
         />

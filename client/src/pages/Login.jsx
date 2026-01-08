@@ -11,9 +11,10 @@ export default function Login() {
   const [email, setEmail] = useState("");
 
   const handleLogin = () => {
-    login(email);
-    navigate("/dashboard");
+  login(email, "citizen"); // later backend decides role
+  navigate("/dashboard");
   };
+
 
   return (
     <Card className="w-87.5">
