@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./context/ProtectedRoute";
 
 export default function App() {
   return (
@@ -43,11 +44,14 @@ export default function App() {
         <Route
           path="/dashboard"
           element={
-            <MainLayout>
-              <Dashboard />
-            </MainLayout>
+            <ProtectedRoute>
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            </ProtectedRoute>
           }
         />
+
       </Routes>
     </BrowserRouter>
   );
