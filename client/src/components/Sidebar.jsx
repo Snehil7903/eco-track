@@ -42,12 +42,19 @@ export default function Sidebar({ open, setOpen }) {
           <Link to="/dashboard" onClick={() => setOpen(false)}>
             Dashboard
           </Link>
-
+          <br></br>
           {user?.role === "citizen" && (
-            <Link to="/complaints" onClick={() => setOpen(false)}>
-              My Complaints
-            </Link>
+            <>
+              <Link to="/complaints" onClick={() => setOpen(false)}>
+                My Complaints
+              </Link>
+              <br></br>
+              <Link to="/complaints/new" onClick={() => setOpen(false)}>
+                Report Waste
+              </Link>
+            </>
           )}
+
 
           {user?.role === "admin" && (
             <>

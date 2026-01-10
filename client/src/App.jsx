@@ -8,6 +8,9 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./context/ProtectedRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
+import NewComplaint from "./pages/complaints/NewComplaint";
+import MyComplaints from "./pages/complaints/MyComplaints";
+
 
 export default function App() {
   return (
@@ -52,6 +55,28 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/complaints"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <MyComplaints />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/complaints/new"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <NewComplaint />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+
 
       </Routes>
     </BrowserRouter>
