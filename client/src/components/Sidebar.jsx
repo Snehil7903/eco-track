@@ -17,13 +17,13 @@ export default function Sidebar({ open, setOpen }) {
 
       <aside
         className={`
-          fixed z-50 md:static
-          top-0 left-0 h-full
-          w-64 bg-green-600 text-white
-          transform transition-transform duration-300
-          ${open ? "translate-x-0" : "-translate-x-full"}
-          md:translate-x-0
-        `}
+        fixed z-50 md:static
+        top-0 left-0 min-h-screen   /* 👈 CHANGE HERE */
+        w-64 bg-green-600 text-white
+        transform transition-transform duration-300
+        ${open ? "translate-x-0" : "-translate-x-full"}
+        md:translate-x-0
+      `}
       >
         <div className="p-4 flex justify-between items-center md:block">
           <h2 className="text-xl font-bold">EcoTrack</h2>
