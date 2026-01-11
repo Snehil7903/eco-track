@@ -10,6 +10,8 @@ import ProtectedRoute from "./context/ProtectedRoute";
 import DashboardLayout from "./layouts/DashboardLayout";
 import NewComplaint from "./pages/complaints/NewComplaint";
 import MyComplaints from "./pages/complaints/MyComplaints";
+import AdminComplaints from "./pages/admin/AdminComplaints";
+
 
 
 export default function App() {
@@ -76,6 +78,17 @@ export default function App() {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin/complaints"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <AdminComplaints />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+
 
 
       </Routes>
