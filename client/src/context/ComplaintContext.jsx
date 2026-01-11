@@ -4,6 +4,7 @@ const ComplaintContext = createContext();
 
 export function ComplaintProvider({ children }) {
   const [complaints, setComplaints] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   // Load complaints on app start
   useEffect(() => {
@@ -11,12 +12,15 @@ export function ComplaintProvider({ children }) {
     if (saved) {
       setComplaints(JSON.parse(saved));
     }
+    setLoading(false);
   }, []);
 
-  // Save complaints on change
+  // Save complaints whenever they change
   useEffect(() => {
-    localStorage.setItem("ecoComplaints", JSON.stringify(complaints));
-  }, [complaints]);
+    if (!loading) {
+      localStorage.setItem("ecoComplaints", JSON.stringify(complaints));
+    }
+  }, [complaints, loading]);
 
   const addComplaint = (complaint) => {
     setComplaints((prev) => [
@@ -40,7 +44,7 @@ export function ComplaintProvider({ children }) {
 
   return (
     <ComplaintContext.Provider
-      value={{ complaints, addComplaint, updateStatus }}
+      value={{ complaints, addComplaint, updateStatus, loading }}
     >
       {children}
     </ComplaintContext.Provider>

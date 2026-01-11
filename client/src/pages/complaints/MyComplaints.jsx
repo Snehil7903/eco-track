@@ -2,7 +2,11 @@ import { useComplaints } from "@/context/ComplaintContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function MyComplaints() {
-  const { complaints } = useComplaints();
+  const { complaints, loading } = useComplaints();
+
+  if (loading) {
+    return <p className="text-gray-500">Loading complaints...</p>;
+  }
 
   if (complaints.length === 0) {
     return <p className="text-gray-500">No complaints submitted yet.</p>;
