@@ -10,10 +10,17 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
-  const handleLogin = () => {
-  login(email, "citizen"); // later backend decides role
+const handleLogin = () => {
+  const adminEmails = ["admin@ecotrack.com"];
+
+  const role = adminEmails.includes(email)
+    ? "admin"
+    : "citizen";
+
+  login(email, role);
   navigate("/dashboard");
-  };
+};
+
 
 
   return (
