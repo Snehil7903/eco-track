@@ -24,7 +24,16 @@ export default function MyComplaints() {
           <CardContent>
             <p className="text-sm text-gray-600">{c.description}</p>
             <p className="mt-2 font-semibold">
-              Status: {c.status}
+              <span
+                className={`px-2 py-1 rounded text-sm font-semibold
+                    ${c.status === "Resolved"
+                    ? "bg-green-100 text-green-700"
+                    : "bg-yellow-100 text-yellow-700"
+                  }`}
+              >
+                {c.status}
+              </span>
+
             </p>
           </CardContent>
         </Card>

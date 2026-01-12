@@ -11,6 +11,10 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import NewComplaint from "./pages/complaints/NewComplaint";
 import MyComplaints from "./pages/complaints/MyComplaints";
 import AdminComplaints from "./pages/admin/AdminComplaints";
+import RoleRoute from "./components/RoleRoute";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+
+
 
 
 
@@ -61,9 +65,11 @@ export default function App() {
           path="/complaints"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
-                <MyComplaints />
-              </DashboardLayout>
+              <RoleRoute allow={["citizen"]}>
+                <DashboardLayout>
+                  <MyComplaints />
+                </DashboardLayout>
+              </RoleRoute>
             </ProtectedRoute>
           }
         />
@@ -72,22 +78,41 @@ export default function App() {
           path="/complaints/new"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
-                <NewComplaint />
-              </DashboardLayout>
+              <RoleRoute allow={["citizen"]}>
+                <DashboardLayout>
+                  <NewComplaint />
+                </DashboardLayout>
+              </RoleRoute>
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/admin/complaints"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
-                <AdminComplaints />
-              </DashboardLayout>
+              <RoleRoute allow={["admin"]}>
+                <DashboardLayout>
+                  <AdminComplaints />
+                </DashboardLayout>
+              </RoleRoute>
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/admin/analytics"
+          element={
+            <ProtectedRoute>
+              <RoleRoute allow={["admin"]}>
+                <DashboardLayout>
+                  <AdminAnalytics />
+                </DashboardLayout>
+              </RoleRoute>
+            </ProtectedRoute>
+          }
+        />
+
+
 
 
 

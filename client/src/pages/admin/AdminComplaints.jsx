@@ -26,7 +26,16 @@ export default function AdminComplaints() {
                     </CardHeader>
                     <CardContent className="space-y-2">
                         <p className="text-sm text-gray-600">{c.description}</p>
-                        <p>Status: <strong>{c.status}</strong></p>
+                        <p>Status: <strong><span
+                            className={`px-2 py-1 rounded text-sm font-semibold
+                                    ${c.status === "Resolved"
+                                    ? "bg-green-100 text-green-700"
+                                    : "bg-yellow-100 text-yellow-700"
+                                }`}
+                        >
+                            {c.status}
+                        </span>
+                        </strong></p>
 
                         {c.status === "Pending" && (
                             <Button
