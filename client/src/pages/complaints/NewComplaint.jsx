@@ -9,12 +9,18 @@ export default function NewComplaint() {
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [coords, setCoords] = useState(null); // ✅ MOVED HERE
 
   const { addComplaint } = useComplaints();
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    addComplaint({ location, description, image });
+    addComplaint({
+      location,
+      description,
+      image,
+      coords,
+    });
     navigate("/complaints");
   };
 
@@ -51,6 +57,23 @@ export default function NewComplaint() {
             className="h-40 rounded object-cover"
           />
         )}
+
+        <Button
+          variant="outline"
+          onClick={() => {
+            navigator.geolocation.getCurrentPosition(
+              (pos) => {
+                setCoords({
+                  lat: pos.coords.latitude,
+                  lng: pos.coords.longitude,
+                });
+              },
+              () => alert("Location permission denied")
+            );
+          }}
+        >
+          Use My Location
+        </Button>
 
         <Button className="w-full" onClick={handleSubmit}>
           Submit Complaint
